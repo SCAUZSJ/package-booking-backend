@@ -48,7 +48,7 @@ public class ParcelControllerTest {
         parcel.setStatus("未预约");
         repository.saveAndFlush(parcel);
         //when
-        String response = this.mockMvc.perform(get("/parcels")).andReturn().getResponse().getContentAsString();
+        String response = this.mockMvc.perform(get("/parcels?status=未预约")).andReturn().getResponse().getContentAsString();
         JSONObject json = new JSONObject(response);
         //then
         Assertions.assertEquals("20193232",json.getJSONArray("data").getJSONObject(0).get("id"));

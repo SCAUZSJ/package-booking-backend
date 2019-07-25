@@ -21,8 +21,8 @@ public class ParcelController {
         return new ResponseDIY(HttpStatus.CREATED.value(),parcelService.add(parce));
     }
     @GetMapping()
-    public ResponseDIY findAll(){
-        return new ResponseDIY(HttpStatus.OK.value(),parcelService.findAll());
+    public ResponseDIY findByStatus(@RequestParam("status") String status){
+        return new ResponseDIY(HttpStatus.OK.value(),parcelService.findByStatus(status));
     }
 
     @PutMapping("/{id}")

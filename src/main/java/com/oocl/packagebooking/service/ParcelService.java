@@ -43,4 +43,8 @@ public class ParcelService {
         }
         return false;
     }
+
+    public List<Parcel> findByStatus(String status) {
+        return parcelRepository.findByStatus(status);
+    }
 }
