@@ -18,6 +18,10 @@ public class ParcelController {
 
         return new ResponseDIY(HttpStatus.CREATED.value(),ParcelService.add(parce));
     }
+    @GetMapping()
+    public ResponseDIY findAll(){
+        return new ResponseDIY(HttpStatus.OK.value(),ParcelService.findAll());
+    }
 
 
 
