@@ -25,7 +25,7 @@ public class Parcel {
     private String status;
 
     @Column(name="ap_time")
-    private Timestamp apTime;
+    private long apTime;
 
     public Parcel() {
     }
@@ -69,11 +69,11 @@ public class Parcel {
         this.status = status;
     }
 
-    public Timestamp getApTime() {
+    public long getApTime() {
         return apTime;
     }
 
-    public void setApTime(Timestamp apTime) {
+    public void setApTime(long apTime) {
         this.apTime = apTime;
     }
 

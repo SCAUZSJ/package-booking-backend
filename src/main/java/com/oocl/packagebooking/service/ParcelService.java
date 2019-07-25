@@ -31,10 +31,10 @@ public class ParcelService {
         parcel.setId(id);
         return parcelRepository.saveAndFlush(parcel);
     }
-    public boolean updateApTime(String id , String apTime){
+    public boolean updateApTime(String id , long apTime){
         Parcel parcel = parcelRepository.findById(id).get();
         parcel.setStatus("已预约");
-        parcel.setApTime(new Timestamp(Integer.parseInt(apTime)));
+        parcel.setApTime(apTime);
         try {
             parcelRepository.saveAndFlush(parcel);
             return true;
@@ -45,6 +45,7 @@ public class ParcelService {
     }
 
     public List<Parcel> findByStatus(String status) {
+        if(status.equals("ALL")) return parcelRepository.findAll();
         return parcelRepository.findByStatus(status);
     }
 }

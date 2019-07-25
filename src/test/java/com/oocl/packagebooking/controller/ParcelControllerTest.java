@@ -79,7 +79,7 @@ public class ParcelControllerTest {
         String response = this.mockMvc.perform(patch("/parcels/20193232?apTime=1564022727").contentType(MediaType.APPLICATION_JSON_UTF8).
                 content(objectJson)).andReturn().getResponse().getContentAsString();
         JSONObject obj = new JSONObject(response);
-        Assertions.assertEquals(true,obj.getString("code"));
+        Assertions.assertEquals(true,obj.getBoolean("data"));
     }
 
 }

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.sql.Timestamp;
 
+@CrossOrigin(value = "*")
 @RestController
 @RequestMapping("/parcels")
 public class ParcelController {
@@ -30,7 +31,7 @@ public class ParcelController {
         return new ResponseDIY(HttpStatus.OK.value(),parcelService.update(id,parcel));
     }
     @PatchMapping("/{id}")
-    public ResponseDIY updateApTime(@PathVariable String id, @RequestParam("apTime") String apTime){
+    public ResponseDIY updateApTime(@PathVariable String id, @RequestParam("apTime") long apTime){
         return new ResponseDIY(HttpStatus.OK.value(),parcelService.updateApTime(id,apTime));
     }
 
