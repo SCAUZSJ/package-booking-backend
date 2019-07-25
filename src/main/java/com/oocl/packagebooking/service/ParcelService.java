@@ -6,7 +6,9 @@ import com.oocl.packagebooking.repository.ParcelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ParcelService {
@@ -23,5 +25,22 @@ public class ParcelService {
 
     public List<Parcel> findAll() {
         return parcelRepository.findAll();
+    }
+
+    public Parcel update(String id, Parcel parcel) {
+        parcel.setId(id);
+        return parcelRepository.saveAndFlush(parcel);
+    }
+    public boolean updateApTime(String id , String apTime){
+        Parcel parcel = parcelRepository.findById(id).get();
+        parcel.setStatus("已预约");
+        parcel.setApTime(new Timestamp(Integer.parseInt(apTime)));
+        try {
+            parcelRepository.saveAndFlush(parcel);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 }

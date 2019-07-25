@@ -7,20 +7,31 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Timestamp;
+
 @RestController
 @RequestMapping("/parcels")
 public class ParcelController {
     @Autowired
-    private ParcelService ParcelService;
+    private ParcelService parcelService;
 
     @PostMapping(produces = {"application/json"})
     public ResponseDIY add(@RequestBody Parcel parce) throws RuntimeException{
 
-        return new ResponseDIY(HttpStatus.CREATED.value(),ParcelService.add(parce));
+        return new ResponseDIY(HttpStatus.CREATED.value(),parcelService.add(parce));
     }
     @GetMapping()
     public ResponseDIY findAll(){
-        return new ResponseDIY(HttpStatus.OK.value(),ParcelService.findAll());
+        return new ResponseDIY(HttpStatus.OK.value(),parcelService.findAll());
+    }
+
+    @PutMapping("/{id}")
+    public ResponseDIY updateById(@PathVariable String id, @RequestBody Parcel parcel){
+        return new ResponseDIY(HttpStatus.OK.value(),parcelService.update(id,parcel));
+    }
+    @PatchMapping("/{id}")
+    public ResponseDIY updateApTime(@PathVariable String id, @RequestParam("apTime") String apTime){
+        return new ResponseDIY(HttpStatus.OK.value(),parcelService.updateApTime(id,apTime));
     }
 
 
