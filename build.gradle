@@ -48,6 +48,6 @@ dependencies {
 
 
 flyway {
-	url = 'jdbc:h2:mem:package'
+	url = 'jdbc:h2:mem:parcel'
 	user = 'sa'
 }

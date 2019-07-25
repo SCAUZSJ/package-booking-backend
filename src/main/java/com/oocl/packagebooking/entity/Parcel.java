@@ -6,8 +6,8 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name="package")
-public class Package {
+@Table(name="parcel")
+public class Parcel {
 
     @Id
     private String id;
@@ -27,10 +27,10 @@ public class Package {
     @Column(name="ap_time")
     private Timestamp apTime;
 
-    public Package() {
+    public Parcel() {
     }
 
-    public Package(String id, String owner, String phone, double weight) {
+    public Parcel(String id, String owner, String phone, double weight) {
         this.id = id;
         this.owner = owner;
         this.phone = phone;
@@ -69,8 +69,8 @@ public class Package {
         this.status = status;
     }
 
-    public long getApTime() {
-        return apTime.getTime();
+    public Timestamp getApTime() {
+        return apTime;
     }
 
     public void setApTime(Timestamp apTime) {
